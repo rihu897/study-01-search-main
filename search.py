@@ -16,7 +16,7 @@ def get_sources_csv(csv_path) :
 ### CSV更新処理
 def upd_sources_csv(csv_path, new_list) :
     # CSV読み込み
-    csv_file = open(csv_path, "w", encoding = "utf-8", newline = "")
+    csv_file = open(csv_path, "w", encoding = "utf-8-sig", newline = "")
     writer = csv.writer(csv_file, delimiter = ",")
     # CSV更新
     writer.writerow(new_list)
@@ -34,12 +34,10 @@ def search():
     ### １．入力したワードで、リストを検索して結果をPrint文で表示してみましょう
     # 検索結果
     result = False
-    # 検索ソース分繰り返し処理
-    for source in sources :
-        # 検索ソースと入力ワードが一致した場合
-        if source == word :
-            # 検索結果を更新
-            result = True
+    # 検索ソースリストに入力ワードが存在する場合
+    if word in sources :
+        # 検索結果を更新
+        result = True
 
     # 検索結果=True
     if result :
